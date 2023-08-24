@@ -12,6 +12,11 @@
                height: 400px;
                object-fit: cover;
           }
+          .lk{
+               text-decoration: none;
+               font-size: 20px;
+               
+          }
      </style>
 </head>
 
@@ -26,9 +31,15 @@
                       <h5>Categories</h5>
                     </div>
                     <ul class="list-group list-group-flush">
-                      <li class="list-group-item"><h5>All</h5></li>
+                      <li class="list-group-item">
+                         <a href="{% url 'gallary' %}" class="lk">All</a>
+                      </li>
                       {% for category in categories %}
-                      <li class="list-group-item"><h6>{{ category.name }}</h6></li>
+                      <li class="list-group-item">
+                         <a href="{% url 'gallary' %}?category={{category.name}}" class="lk">
+                              {{ category.name }}
+                         </a>
+                    </li>
                       {% endfor %}
                      
                          <a href="{% url 'addPhoto' %}" class="btn btn-block btn-dark btn-sm m-1">Add Photo</a>
@@ -51,7 +62,7 @@
                     </div>
 
                     {% empty %}
-                    <h3>No photos....</h3>
+                    <h3>There is no any photos....</h3>
                     
                     {% endfor %}
                </div>

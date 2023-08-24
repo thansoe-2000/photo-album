@@ -3,8 +3,14 @@ from .models import *
 from .forms import *
 # Create your views here.
 def gallary(request):
+     category = request.GET.get('category')
+     if category == None:
+          photos = Photo.objects.all()
+     else:
+          photos = Photo.objects.filter(category__name=category)
+
      categories = Category.objects.all()
-     photos = Photo.objects.all()
+     
      context = {
           'categories':categories,
           'photos':photos
@@ -19,6 +25,7 @@ def viewPhoto(request, pk):
      return render(request, 'photos/photo.html', context)
 
 def addPhoto(request):
+     categories = Category.objects.all()
      form = PhotoForm()
      if request.method == 'POST':
           form = PhotoForm(request.POST, request.FILES)
@@ -26,6 +33,7 @@ def addPhoto(request):
                form.save()
                return redirect('gallary')
      context = {
-          'form':form
+          'form':form,
+          'categories':categories
      }
      return render(request, 'photos/add.html', context)
