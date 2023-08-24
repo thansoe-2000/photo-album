@@ -37,3 +37,10 @@ def addPhoto(request):
           'categories':categories
      }
      return render(request, 'photos/add.html', context)
+
+
+def check():
+   pass
+
+def error_500(request):
+   return render(request, 'photos/500_error.html' )
