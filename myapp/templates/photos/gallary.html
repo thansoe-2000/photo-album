@@ -1,84 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Gallary</title>
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallary</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
 
+    <style>
+      .image-thumbail {
+        height: 400px;
+        object-fit: cover;
+      }
+      .lk {
+        text-decoration: none;
+        font-size: 20px;
+      }
+    </style>
+  </head>
 
-     <style>
-          .image-thumbail{
-               height: 400px;
-               object-fit: cover;
-          }
-          .lk{
-               text-decoration: none;
-               font-size: 20px;
-               
-          }
-     </style>
-</head>
+  <body>
+    <div class="container m-5">
+      <div class="row">
+        <div class="col col-md-4">
+          <div class="card">
+            <div class="card-header">
+              <h5>Categories</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <a href="{% url 'gallary' %}" class="lk">All</a>
+              </li>
+              {% for category in categories %}
+              <li class="list-group-item">
+                <a
+                  href="{% url 'gallary' %}?category={{category.name}}"
+                  class="lk"
+                >
+                  {{ category.name }}
+                </a>
+              </li>
+              {% endfor %}
 
-
-<body>
-     
-<div class="container m-5">
-     <div class="row">
-          <div class="col col-md-4">
-               <div class="card">
-                    <div class="card-header">
-                      <h5>Categories</h5>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">
-                         <a href="{% url 'gallary' %}" class="lk">All</a>
-                      </li>
-                      {% for category in categories %}
-                      <li class="list-group-item">
-                         <a href="{% url 'gallary' %}?category={{category.name}}" class="lk">
-                              {{ category.name }}
-                         </a>
-                    </li>
-                      {% endfor %}
-                     
-                         <a href="{% url 'addPhoto' %}" class="btn btn-block btn-dark btn-sm m-1">Add Photo</a>
-                     
-                    </ul>
-                  </div>
+              <a
+                href="{% url 'addPhoto' %}"
+                class="btn btn-block btn-dark btn-sm m-1"
+                >Add Photo</a
+              >
+            </ul>
           </div>
-          <div class="col col-md-8">
-               <div class="row">
-                    {% for photo in photos %}
-                    <div class="col-md-4">
-                         <div class="card">
-                              <img src="{{ photo.image.url }}" class="image-thumbail" alt="...">
-                              <div class="card-body">
-                                <small>Category: {{ photo.category}}</small>
-                              </div>
-                              <a href="{% url 'photo' photo.id %}" class="btn btn-outline-dark btn-sm m-1">View</a>
+        </div>
+        <div class="col col-md-8">
+          <div class="row">
+            {% for photo in photos %}
+            <div class="col-md-4">
+              <div class="card">
+                <img
+                  src="{{ photo.image.url }}"
+                  class="image-thumbail"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <small>Category: {{ photo.category}}</small>
+                </div>
+                <a
+                  href="{% url 'photo' photo.id %}"
+                  class="btn btn-outline-dark btn-sm m-1"
+                  >View</a
+                >
+              </div>
+            </div>
 
-                         </div>
-                    </div>
+            {% empty %}
+            <h3>There is no any photos....</h3>
 
-                    {% empty %}
-                    <h3>There is no any photos....</h3>
-                    
-                    {% endfor %}
-               </div>
+            {% endfor %}
           </div>
-     </div>
-</div>
+        </div>
+      </div>
+    </div>
 
-                    
-
-                   
-
-                    
-
-                    
-
-
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
