@@ -29,7 +29,7 @@
         <div class="col-md-4">
 
           {% if request.user.is_authenticated %}
-                {{ request.user }}
+               <p>Hello {{ request.user }}</p>
           {% endif %}
           <div class="card">
             <div class="card-header">
@@ -53,8 +53,13 @@
               <a
                 href="{% url 'addPhoto' %}"
                 class="btn btn-block btn-dark btn-sm m-1"
-                >Add Photo</a
-              >
+                >Add Photo
+              </a>
+              <a
+                href="{% url 'login' %}"
+                class="btn btn-block btn-dark btn-sm m-1"
+                >Logout
+              </a>
             </ul>
           </div>
         </div>
