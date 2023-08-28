@@ -2,6 +2,10 @@ from django.shortcuts import render,redirect
 from .models import *
 from .forms import *
 # Create your views here.
+
+def loginPage(request):
+     return render(request, 'photos/login_register.html')
+
 def gallary(request):
      category = request.GET.get('category')
      if category == None:
