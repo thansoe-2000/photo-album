@@ -72,6 +72,7 @@ def viewPhoto(request, pk):
 
 @login_required(login_url='login')
 def addPhoto(request):
+    
      user = request.user
      categories = user.category_set.all()
      form = PhotoForm()

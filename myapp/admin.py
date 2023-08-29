@@ -3,7 +3,7 @@ from django_summernote.admin import SummernoteModelAdmin
 from . models import *
 # Register your models here.
 class CategoryAdmin(admin.ModelAdmin):
-     list_display = ['id', 'name']
+     list_display = ['id', 'name', 'user']
 
      
 class PhotoAdmin(SummernoteModelAdmin):
