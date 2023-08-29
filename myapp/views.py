@@ -47,13 +47,14 @@ def registerUser(request):
 
 @login_required(login_url='login')
 def gallary(request):
+     user = request.user
      category = request.GET.get('category')
      if category == None:
-          photos = Photo.objects.all()
+          photos = Photo.objects.filter(category__user=user)
      else:
-          photos = Photo.objects.filter(category__name=category)
+          photos = Photo.objects.filter(category__name=category, category__user=user)
 
-     categories = Category.objects.all()
+     categories = Category.objects.filter(user=user)
      
      context = {
           'categories':categories,
