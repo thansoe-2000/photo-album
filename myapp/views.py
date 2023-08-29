@@ -72,7 +72,8 @@ def viewPhoto(request, pk):
 
 @login_required(login_url='login')
 def addPhoto(request):
-     categories = Category.objects.all()
+     user = request.user
+     categories = user.category_set.all()
      form = PhotoForm()
      if request.method == 'POST':
           form = PhotoForm(request.POST, request.FILES)
