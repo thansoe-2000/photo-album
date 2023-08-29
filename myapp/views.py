@@ -72,7 +72,7 @@ def viewPhoto(request, pk):
 
 @login_required(login_url='login')
 def addPhoto(request):
-    
+     page = 'addPhoto'
      user = request.user
      categories = user.category_set.all()
      form = PhotoForm()
@@ -82,12 +82,29 @@ def addPhoto(request):
                form.save()
                return redirect('gallary')
      context = {
+          'page':page,
           'form':form,
           'categories':categories
      }
      return render(request, 'photos/add.html', context)
 
 
+
+@login_required(login_url='login')
+def addCategory(request):
+     form = CategoryForm()
+     page = 'category'
+     if request.method == 'POST':
+          form = CategoryForm(request.POST)
+          if form.is_valid():
+               form.save()
+               return redirect('gallary')
+          
+     context = {
+          'page':page,
+          'form':form
+     }
+     return render(request, 'photos/add.html', context)
 def check():
    pass
 

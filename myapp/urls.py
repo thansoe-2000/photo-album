@@ -10,4 +10,5 @@ urlpatterns = [
      path('photo/<str:pk>/', views.viewPhoto, name= "photo"),
      path('check', views.check, name="check"),
      path('add/', views.addPhoto, name= "addPhoto"),
+     path('category/', views.addCategory, name= "addCategory"),
 ]

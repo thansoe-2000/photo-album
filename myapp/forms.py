@@ -29,10 +29,24 @@ class CustomUserCreationForm(UserCreationForm):
       model = User
       fields = ['username', 'password1', 'password2']
 
-   
+
 
    def __init__(self, *args, **kwargs):
       super(CustomUserCreationForm, self).__init__(*args, **kwargs)
       self.fields['username'].widget.attrs.update({'class':'form-control', 'placeholder':'Enter Username'})
       self.fields['password1'].widget.attrs.update({'class':'form-control', 'placeholder':'Enter Password'})
       self.fields['password2'].widget.attrs.update({'class':'form-control', 'placeholder':'Confirm your password'})
+
+class CategoryForm(forms.ModelForm):
+   class Meta:
+      model = Category
+      fields = ['name', 'user']
+      labels = {
+         'name':'Name',
+         'user':'User'
+      }
+      widgets = {
+         'name':forms.TextInput(attrs=({'placeholder':'Create new category', 'class':'form-control'})),
+         
+
+      }

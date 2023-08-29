@@ -15,6 +15,7 @@
 <body class="m-5">
      <div class="container ">
           <div class="row justify-content-center">
+               {% if page == 'addPhoto' %}
                <div class="col-md-7">
                     <a href="{% url 'gallary' %}" class="btn btn-dark my-3">Go back</a>
 
@@ -31,8 +32,22 @@
                               <button type="submit" class="btn btn-success">Save</button>
                               <button type="reset" class="btn btn-danger">Reset</button>
                          </form>
-                    
                </div>
+               {% else %}
+               <div class="col-md-6">
+                    <a href="{% url 'gallary' %}" class="btn btn-dark my-3">Go back</a>
+
+                    
+
+                         <form action="" method="POST">
+                              {% csrf_token %}
+                              {{ form }}
+                              <button type="submit" class="btn btn-success mt-2">Save</button>
+                              <button type="reset" class="btn btn-danger mt-2">Reset</button>
+                         </form>
+               </div>
+               {% endif %}
+                    
           </div>
 
      </div>
