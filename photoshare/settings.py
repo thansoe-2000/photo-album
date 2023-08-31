@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # Third Party Packages
     'crispy_forms',
     'crispy_bootstrap5',
+    'rest_framework',
 ]
 
 INSTALLED_APPS += ('django_summernote', )

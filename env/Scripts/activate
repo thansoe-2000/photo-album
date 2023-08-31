@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="D:\tts\photoshare\env"
+VIRTUAL_ENV="H:\tts\photoshare\env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
